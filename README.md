@@ -3,7 +3,7 @@
 ## A docker file for the pdf alto converter 
 
 `Pdfalto` is an original tools written by Patrice Lopez  and Achraf Azhar 
-to transform XML to the alto format.
+to transform PDF to the XML alto format.
 
 On the alto output format see: https://en.wikipedia.org/wiki/ALTO_(XML)
 
