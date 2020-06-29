@@ -12,7 +12,7 @@ On the alto output format see: https://en.wikipedia.org/wiki/ALTO_(XML)
 
 You can directly run the command below to convert the pdf file in current folder.
 ```
-docker run -ti --rm -v $(pwd):/app pdf2xmlexe sample.pdf 
+docker run -ti --rm -v $(pwd):/app pdfalto sample.pdf 
 ```
 
 or add the function below to you shell configuration (.bash_profil)
@@ -24,7 +24,7 @@ function pdfalto {
 ```
 ## credits
 
-`Pdfalto` is a successor of `pdf2xml` is orignally written by Hervé Déjean, Sophie Andrieu, Jean-Yves Vion-Dury and Emmanuel Giguet (XRCE) under GPL2 license.,
+`Pdfalto` is a successor of `pdf2xml`  orignally written by Hervé Déjean, Sophie Andrieu, Jean-Yves Vion-Dury and Emmanuel Giguet (XRCE) under GPL2 license.,
 
 It is based on Xpdf  developed by Glyph & Cog, LLC (1996-2017) and distributed under GPL2 or GPL3 license.
  
