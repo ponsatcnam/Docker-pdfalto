@@ -1,9 +1,10 @@
 # Convert pdf to alto file
-# this is pdfalto  an original tools 
+# this is pdfalto 
+# an original tools 
 # written by Patrice Lopez  and Achraf Azhar 
 # on the alto format see: https://en.wikipedia.org/wiki/ALTO_(XML)
 
-# You can directly run  command below to convert the pdf file in current folder.
+# You can directly run below command to convert the pdf file in current foler.
 # docker run -ti --rm -v $(pwd):/app pdf2xmlexe sample.pdf 
 
 # or add the function below to you shell configuration (.bash_profil)
@@ -35,7 +36,6 @@ RUN \
 
 RUN git clone https://github.com/kermitt2/pdfalto.git ~/pdfalto
 WORKDIR /root/pdfalto
-RUN git checkout tags/0.2
 RUN git submodule update --init --recursive
 RUN apt-get install -y cmake
 

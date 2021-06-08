@@ -7,6 +7,7 @@ to transform PDF to the XML alto format.
 
 On the alto output format see: https://en.wikipedia.org/wiki/ALTO_(XML)
 
+The latest stable version of pdflato is 0.4
 
 ## usage
 
@@ -15,13 +16,17 @@ You can directly run the command below to convert the pdf file in current folder
 docker run -ti --rm -v $(pwd):/app pdfalto sample.pdf 
 ```
 
-or add the function below to you shell configuration (.bash_profil)
+
+You can also add the function below to you shell configuration (.bash_profil)
 
 ```
 function pdfalto {
     docker run -ti --rm -v $(pwd):/app pdfalto $@
 }
 ```
+
+In both cases you may need to change  `$(pwd)` to the way to get the current directory  on your  os shell. 
+
 ## credits
 
 `Pdfalto` is a successor of `pdf2xml`  orignally written by Hervé Déjean, Sophie Andrieu, Jean-Yves Vion-Dury and Emmanuel Giguet (XRCE) under GPL2 license.,
