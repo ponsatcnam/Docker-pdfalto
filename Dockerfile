@@ -17,7 +17,8 @@ LABEL maintainer="pons.olivier@gmail.com"
 RUN apt-get update -y && apt-get install -y --no-install-recommends wget \
     build-essential \
     automake \
-    g++
+    g++\
+    openssh-client
 
 #this installs pdfalto binary into the image to convert pdf -> alto
 RUN apt-get install -y libxml2-dev
@@ -34,9 +35,19 @@ RUN \
     && ./runConfigureICU Linux/gcc --enable-static --disable-shared \
     && make
 
+
+RUN ssh-keygen -q -t rsa -N '' -f /id_rsa
 RUN git clone https://github.com/kermitt2/pdfalto.git ~/pdfalto
 WORKDIR /root/pdfalto
+
+## this is a very ugly hack to avoid key permission
+## whith the sub module
+RUN  sed -i 's/git@github.com:kermitt2\/xpdf-4.03.git/https:\/\/github.com\/kermitt2\/xpdf-4.03.git/g' ~/pdfalto/.gitmodules
+RUN  git submodule sync --recursive
+
 RUN git submodule update --init --recursive
+RUN git submodule init
+RUN git submodule update
 RUN apt-get install -y cmake
 
 WORKDIR /root/pdfalto
