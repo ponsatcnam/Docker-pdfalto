@@ -14,13 +14,13 @@ The latest stable version of pdflato is 0.4
 You can build the docker image as follow
 
 ```
-build . -t pdfalto
+docker build . -t pdfalto
 ```
 
 There is a Docker image on [Docker Hub](https://hub.docker.com/repository/docker/ponso/pdfalto) that as been build by
 
 ```
-build . -t ponso/pdfalto:0.4
+docker build . -t ponso/pdfalto:0.4
 ```
 
 ## usage
