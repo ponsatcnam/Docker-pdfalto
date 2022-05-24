@@ -36,13 +36,13 @@ RUN \
     && make
 
 
-RUN ssh-keygen -q -t rsa -N '' -f /id_rsa
-RUN git clone https://github.com/kermitt2/pdfalto.git ~/pdfalto
-WORKDIR /root/pdfalto
+#RUN ssh-keygen -q -t rsa -N '' -f /id_rsa
+RUN git clone https://github.com/kermitt2/pdfalto.git /pdfalto
+WORKDIR /pdfalto
 
 ## this is a very ugly hack to avoid key permission
 ## whith the sub module
-RUN  sed -i 's/git@github.com:kermitt2\/xpdf-4.03.git/https:\/\/github.com\/kermitt2\/xpdf-4.03.git/g' ~/pdfalto/.gitmodules
+RUN  sed -i 's/git@github.com:kermitt2\/xpdf-4.03.git/https:\/\/github.com\/kermitt2\/xpdf-4.03.git/g' /pdfalto/.gitmodules
 RUN  git submodule sync --recursive
 
 RUN git submodule update --init --recursive
@@ -50,10 +50,10 @@ RUN git submodule init
 RUN git submodule update
 RUN apt-get install -y cmake
 
-WORKDIR /root/pdfalto
-RUN cmake -D'ICU_PATH=/root/icu'
+WORKDIR /pdfalto
+RUN cmake -D'ICU_PATH=/icu'
 RUN make
 
 WORKDIR /app
-ENTRYPOINT ["/root/pdfalto/pdfalto"]
+ENTRYPOINT ["/pdfalto/pdfalto"]
 CMD [-h]
