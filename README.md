@@ -9,6 +9,20 @@ On the alto output format see: https://en.wikipedia.org/wiki/ALTO_(XML)
 
 The latest stable version of pdflato is 0.4
 
+## build 
+  
+You can build the docker image as follow
+
+```
+docker build . -t pdfalto
+```
+
+There is a Docker image on [Docker Hub](https://hub.docker.com/repository/docker/ponso/pdfalto) that as been build by
+
+```
+docker build . -t ponso/pdfalto:0.4
+```
+
 ## usage
 
 You can directly run the command below to convert the pdf file in current folder.
@@ -26,6 +40,8 @@ function pdfalto {
 ```
 
 In both cases you may need to change  `$(pwd)` to the way to get the current directory  on your  os shell. 
+
+you may add -u $(id -u):$(id -g) to avoid the production of any file with root ownership
 
 ## credits
 
